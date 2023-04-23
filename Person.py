@@ -17,13 +17,6 @@ from pyspark.sql.window import Window
 import pyspark.sql.functions as F
 import adal
 
-# COMMAND ----------
-
-#Fazendo a leitura do blob com a montagem do diretório (mount) 
-#dbutils.fs.mount(source = "wasbs://pedro-avila@stgestudos.blob.core.windows.net",
- #  mount_point = "/mnt/pedro-avila",
-  # extra_configs = {"fs.azure.account.key.stgestudos.blob.core.windows.net":dbutils.secrets.get(scope = "scope-adb-estudos", key = "chave-pedro-avila")})
-#dbutils.fs.ls("wasbs://pedro-avila@stgestudos.blob.core.windows.net/lab_03_azure/")
 
 # COMMAND ----------
 
@@ -32,21 +25,6 @@ df_person = spark.read.option("header", True).option("inferSchema", True).option
 display(df_person)
 
 
-# COMMAND ----------
-
-#import pyspark.sql.functions
-#from pyspark.sql import SparkSession
-#from pyspark.sql.functions import from_json, col ,split, explode
-#from pyspark.sql.types import StructType, StructField, StringType, ArrayType, DataType, IntegerType
-#df2 = df.select(col("BusinessEntityID"),
- #               col("PersonType"),
- #               col("NameStyle"),
-#                col("Title"),
-  #              col("FirstName"),
-  #              col("MiddleName"),
-  #              col("LastName"),
-  #              col("Suffix"),
-  #              col("EmailPromotion"))
                 
 
 # COMMAND ----------
