@@ -14,6 +14,8 @@ Para os 6 arquivo em formato csv foi feito um df diferente.
 
 
 Esse são os conjutos de dados:
+
+
 ● Person.Person.csv
 
 ● Production.Product.csv
