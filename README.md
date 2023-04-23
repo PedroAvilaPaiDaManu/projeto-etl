@@ -10,7 +10,7 @@ Com Databricks usei a linguagem pyspark para trabalhar o tratamento dos dados e 
 
 ![image](https://user-images.githubusercontent.com/121688647/233819020-16103320-6213-4f5c-9b64-2603bd075819.png)
 
-Para os 6 arquivod em formato csv foi feito um df diferente.
+Para os 6 arquivo em formato csv foi feito um df diferente.
 
 
 Esse são os conjutos de dados:
@@ -25,3 +25,6 @@ Esse são os conjutos de dados:
 ● Sales.SalesOrderDetail.csv
 
 ● Sales.SpecialOfferProduct.csv
+
+
+Depois de Aplicado todas as regras de negocio utilizei o Data factory para fazer a ingestão dos dados com um pipeline no banco de dados Azure Sql, para posteriomente esses dados poderem ser acessados pelo Power BI.
