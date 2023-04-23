@@ -6,4 +6,22 @@ Arquitetura do projeto a baixo!
 
 
 Utilizei o blob para armazenamento dos dados sem nenhum tratamento.
-Depois dos dados armazenado utilizei o Databricks para trabalhar o tratamento dos dados e aplicação de regra de negocio, usei a linguagem pyspark, para acelera o processo 
+Com Databricks usei a linguagem pyspark para trabalhar o tratamento dos dados e aplicação de regra de negocio, para acelera o processo fiz o read direto em um dataframe como mostrado abaixo!
+
+![image](https://user-images.githubusercontent.com/121688647/233819020-16103320-6213-4f5c-9b64-2603bd075819.png)
+
+Para os 6 arquivod em formato csv foi feito um df diferente.
+
+
+Esse são os conjutos de dados:
+● Person.Person.csv
+
+● Production.Product.csv
+
+● Sales.SalesOrderHeader.csv
+
+● Sales.Customer.csv
+
+● Sales.SalesOrderDetail.csv
+
+● Sales.SpecialOfferProduct.csv
