@@ -31,6 +31,8 @@ df_person = spark.read.option("header", True).option("inferSchema", True).option
 display(df_person)
 
 
+
+
 # COMMAND ----------
 
 #import pyspark.sql.functions
