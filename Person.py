@@ -17,6 +17,13 @@ from pyspark.sql.window import Window
 import pyspark.sql.functions as F
 import adal
 
+# COMMAND ----------
+
+#Fazendo a leitura do blob com a montagem do diretório (mount) 
+#dbutils.fs.mount(source = "wasbs://pedro-avila@stgestudos.blob.core.windows.net",
+ #  mount_point = "/mnt/pedro-avila",
+  # extra_configs = {"fs.azure.account.key.stgestudos.blob.core.windows.net":dbutils.secrets.get(scope = "scope-adb-estudos", key = "chave-pedro-avila")})
+#dbutils.fs.ls("wasbs://pedro-avila@stgestudos.blob.core.windows.net/lab_03_azure/")
 
 # COMMAND ----------
 
@@ -25,6 +32,21 @@ df_person = spark.read.option("header", True).option("inferSchema", True).option
 display(df_person)
 
 
+# COMMAND ----------
+
+#import pyspark.sql.functions
+#from pyspark.sql import SparkSession
+#from pyspark.sql.functions import from_json, col ,split, explode
+#from pyspark.sql.types import StructType, StructField, StringType, ArrayType, DataType, IntegerType
+#df2 = df.select(col("BusinessEntityID"),
+ #               col("PersonType"),
+ #               col("NameStyle"),
+#                col("Title"),
+  #              col("FirstName"),
+  #              col("MiddleName"),
+  #              col("LastName"),
+  #              col("Suffix"),
+  #              col("EmailPromotion"))
                 
 
 # COMMAND ----------
@@ -159,4 +181,104 @@ result.show(10)
 
 # COMMAND ----------
 
+import adal
+resource_app_id_url = "https://database.windows.net/"
+service_principal_id = dbutils.secrets.get(scope = "scope-adb-estudos", key = "app-reg-adb")
+service_principal_secret = dbutils.secrets.get(scope = "scope-adb-estudos", key = "app-user-databricks")
+tenant_id = "b4920c82-7581-491a-9dab-cd2ade2f3ebd"
+authority = "https://login.windows.net/" + tenant_id
+azure_sql_url = "jdbc:sqlserver://sql-estudo.database.windows.net"
+database_name = "db-estudos"
+table_person = "pedro_avila.person"
+table_product = "pedro_avila.productionproduct"
+table_customer = "pedro_avila.customer"
+table_header = "pedro_avila.salesorderheader"
+table_detail = "pedro_avila.salesorderdetail"
+table_offerproduct = "pedro_avila.specialofferproduct"
+encrypt = "true"
+host_name_in_certificate = "*.database.windows.net"
+context = adal.AuthenticationContext(authority)
+token = context.acquire_token_with_client_credentials(resource_app_id_url, service_principal_id, service_principal_secret)
+access_token = token["accessToken"]
+
+# COMMAND ----------
+
+df_person.write \
+.format("jdbc")\
+.mode("overwrite")\
+.option("url", azure_sql_url) \
+.option("dbtable", table_person) \
+.option("databaseName", database_name) \
+.option("accessToken", access_token) \
+.option("encrypt", "true") \
+.option("hostNameInCertificate", "*.database.windows.net") \
+.save()
+
+# COMMAND ----------
+
+df_custumer.write \
+.format("jdbc")\
+.mode("overwrite")\
+.option("url", azure_sql_url) \
+.option("dbtable", table_customer) \
+.option("databaseName", database_name) \
+.option("accessToken", access_token) \
+.option("encrypt", "true") \
+.option("hostNameInCertificate", "*.database.windows.net") \
+.save()
+
+# COMMAND ----------
+
+
+df_header.write \
+.format("jdbc")\
+.mode("overwrite")\
+.option("url", azure_sql_url) \
+.option("dbtable", table_header) \
+.option("databaseName", database_name) \
+.option("accessToken", access_token) \
+.option("encrypt", "true") \
+.option("hostNameInCertificate", "*.database.windows.net") \
+.save()
+
+# COMMAND ----------
+
+
+df_production.write \
+.format("jdbc")\
+.mode("overwrite")\
+.option("url", azure_sql_url) \
+.option("dbtable", table_product) \
+.option("databaseName", database_name) \
+.option("accessToken", access_token) \
+.option("encrypt", "true") \
+.option("hostNameInCertificate", "*.database.windows.net") \
+.save()
+
+# COMMAND ----------
+
+df_offer_product.write \
+.format("jdbc")\
+.mode("overwrite")\
+.option("url", azure_sql_url) \
+.option("dbtable", table_offerproduct) \
+.option("databaseName", database_name) \
+.option("accessToken", access_token) \
+.option("encrypt", "true") \
+.option("hostNameInCertificate", "*.database.windows.net") \
+.save()
+
+
+# COMMAND ----------
+
+df_detail.write \
+.format("jdbc")\
+.mode("overwrite")\
+.option("url", azure_sql_url) \
+.option("dbtable", table_detail) \
+.option("databaseName", database_name) \
+.option("accessToken", access_token) \
+.option("encrypt", "true") \
+.option("hostNameInCertificate", "*.database.windows.net") \
+.save()
 
