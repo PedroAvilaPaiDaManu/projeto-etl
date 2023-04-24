@@ -29,4 +29,15 @@ Esse são os conjutos de dados:
 ● Sales.SpecialOfferProduct.csv
 
 
-Depois de Aplicado todas as regras de negocio utilizei o Data factory para fazer a ingestão dos dados com um pipeline no banco de dados Azure Sql, para posteriomente esses dados poderem ser acessados pelo Power BI.
+leitura do Blob
+
+![image](https://user-images.githubusercontent.com/121688647/233875579-869aa7cb-6c07-40c2-af93-2e499f22c9a4.png)
+
+
+
+Criação das tabelas direto do data frame
+Existe as configuração que não coloquei aqui para preservar as credencias 
+
+![image](https://user-images.githubusercontent.com/121688647/233875648-10af8ac2-2554-4d04-92f1-baad2331a6df.png)
+
+
