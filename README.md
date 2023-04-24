@@ -36,6 +36,7 @@ leitura do Blob
 
 
 Criação das tabelas direto do data frame
+
 Existe as configuração que não coloquei aqui para preservar as credencias 
 
 ![image](https://user-images.githubusercontent.com/121688647/233875648-10af8ac2-2554-4d04-92f1-baad2331a6df.png)
