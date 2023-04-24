@@ -22,8 +22,7 @@ import adal
 #Fazendo a leitura do blob com a montagem do diretório (mount) 
 #dbutils.fs.mount(source = "wasbs://pedro-avila@stgestudos.blob.core.windows.net",
  #  mount_point = "/mnt/pedro-avila",
-  # extra_configs = {"fs.azure.account.key.stgestudos.blob.core.windows.net":dbutils.secrets.get(scope = "scope-adb-estudos", key = "chave-pedro-avila")})
-#dbutils.fs.ls("wasbs://pedro-avila@stgestudos.blob.core.windows.net/lab_03_azure/")
+  # extra_configs = {"")
 
 # COMMAND ----------
 
