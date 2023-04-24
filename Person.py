@@ -182,10 +182,10 @@ result.show(10)
 # COMMAND ----------
 
 import adal
-resource_app_id_url = "https://database.windows.net/"
-service_principal_id = dbutils.secrets.get(scope = "scope-adb-estudos", key = "app-reg-adb")
-service_principal_secret = dbutils.secrets.get(scope = "scope-adb-estudos", key = "app-user-databricks")
-tenant_id = "b4920c82-7581-491a-9dab-cd2ade2f3ebd"
+resource_app_id_url = ""
+service_principal_id = dbutils.secrets.get(scope = , key = "")
+service_principal_secret = dbutils.secrets.get(scope = "", key = "")
+tenant_id = ""
 authority = "https://login.windows.net/" + tenant_id
 azure_sql_url = "jdbc:sqlserver://sql-estudo.database.windows.net"
 database_name = "db-estudos"
